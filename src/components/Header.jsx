@@ -1,21 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, selectUser } from "../store/appSlice";
+import { fetchUser, selectUser } from "../store/appSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(
-        setUser({
-          id: 1,
-          name: "Иван Иванов",
-          email: "ivan@example.com",
-        })
-      );
-    }, 500);
+    dispatch(fetchUser());
   }, [dispatch]);
 
   return (
