@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../store/appSlice";
+import { fetchProducts, selectProducts, selectLoading, selectError } from "../store/appSlice";
 import { addToCart } from "../store/cartSlice";
+import ErrorMessage from "./ErrorMessage";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.app.products);
-  const loading = useSelector((state) => state.app.loading);
+  const products = useSelector(selectProducts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("name");
   const [showFilters, setShowFilters] = useState(false);
 
-useEffect(() => {
-  dispatch(fetchProducts());
-}, [dispatch]);
-
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const filteredProducts = products
     .filter((product) => {
@@ -47,6 +48,12 @@ useEffect(() => {
 
   if (loading) {
     return <div className="loading">Загрузка товаров...</div>;
+  }
+
+  if (error) {
+    return (
+      <ErrorMessage message={error} onRetry={() => dispatch(fetchProducts())} />
+    );
   }
 
   return (

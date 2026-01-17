@@ -109,6 +109,6 @@ export const selectUser = (state) => state.app.user;
 export const selectLoading = (state) => state.app.loading;
 export const selectError = (state) => state.app.error;
 
-export const { setProducts, setUser, setLoading, setError } = appSlice.actions;
+export const { setUser } = appSlice.actions;
 
 export default appSlice.reducer;
