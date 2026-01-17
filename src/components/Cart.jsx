@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, setQuantity, clearCart } from "../store/cartSlice";
+import {
+  selectCartItems,
+  selectCartTotalQuantity,
+  selectCartTotalPrice,
+} from "../store/cartSelectors";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.items);
-
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-
+  const cart = useSelector(selectCartItems);
+  const cartCount = useSelector(selectCartTotalQuantity);
+  const totalPrice = useSelector(selectCartTotalPrice);
   const [isOpen, setIsOpen] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
 

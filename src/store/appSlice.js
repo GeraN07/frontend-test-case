@@ -16,7 +16,7 @@ export const fetchProducts = createAsyncThunk("app/fetchProducts", async () => {
           name: "iPhone 14",
           price: 799,
           category: "phones",
-          image: "https://via.placeholder.com/200",
+          image: "https://dummyimage.com/200",
           description: "Новейший iPhone",
         },
         {
@@ -24,7 +24,7 @@ export const fetchProducts = createAsyncThunk("app/fetchProducts", async () => {
           name: "Samsung Galaxy S23",
           price: 699,
           category: "phones",
-          image: "https://via.placeholder.com/200",
+          image: "https://dummyimage.com/200",
           description: "Флагман Samsung",
         },
         {
@@ -32,8 +32,32 @@ export const fetchProducts = createAsyncThunk("app/fetchProducts", async () => {
           name: "MacBook Pro",
           price: 1999,
           category: "laptops",
-          image: "https://via.placeholder.com/200",
+          image: "https://dummyimage.com/200",
           description: "Мощный ноутбук Apple",
+        },
+        {
+          id: 4,
+          name: "Dell XPS 13",
+          price: 1299,
+          category: "laptops",
+          image: "https://dummyimage.com/200",
+          description: "Премиум ноутбук Dell",
+        },
+        {
+          id: 5,
+          name: "iPad Air",
+          price: 599,
+          category: "tablets",
+          image: "https://dummyimage.com/200",
+          description: "Планшет Apple",
+        },
+        {
+          id: 6,
+          name: "Samsung Galaxy Tab",
+          price: 399,
+          category: "tablets",
+          image: "https://dummyimage.com/200",
+          description: "Планшет Samsung",
         },
       ]);
     }, 1000);
